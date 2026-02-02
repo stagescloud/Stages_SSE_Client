@@ -82,6 +82,98 @@ The configuration is returned in the following JSON format:
 }
 ```
 
+## Event Structure
+
+Events arrive from the SSE stream as JSON. Below is the full structure of a `TrainingSessionIntervalChanged` event:
+
+```json
+{
+  "id": "evt_123",
+  "type": "TrainingSessionIntervalChanged",
+  "roomId": "123",
+  "user_id": "456",
+  "session_id": "7891011",
+  "broadcastedAt": 1706886000000,
+  "payload": "{...}"
+}
+```
+
+The `payload` field is a JSON-encoded string. When deserialized, it has the following structure:
+
+```json
+{
+  "event_type": "TrainingSessionIntervalChanged",
+  "source": "stages-studio",
+  "timestamp": "2025-02-02T18:00:00Z",
+  "data": {
+    "currentIntervalIndex": 2,
+    "currentInterval": {
+      "index": 0,
+      "groupType": "workout",
+      "absoluteStart": 300.0,
+      "duration": 60.0,
+      "enterOffset": 0.0,
+      "exitOffset": 60.0,
+      "groupEnterOffset": 0.0,
+      "state": "active",
+      "isFirst": false,
+      "isLast": false,
+      "interval": {
+        "id": "001",
+        "title": "Interval 1",
+        "durationType": "time",
+        "durationValue": 60.0,
+        "primary": {
+          "type": "ftpPercentage",
+          "valueType": "single",
+          "value": 85.0,
+          "endValue": 85.0
+        }
+      }
+    },
+    "nextIntervalIndex": 3,
+    "nextInterval": {
+      "index": 1,
+      "groupType": "workout",
+      "absoluteStart": 360.0,
+      "duration": 30.0,
+      "enterOffset": 0.0,
+      "exitOffset": 30.0,
+      "groupEnterOffset": 0.0,
+      "state": "future",
+      "isFirst": false,
+      "isLast": false,
+      "interval": {
+        "id": "002",
+        "title": "Recovery",
+        "durationType": "time",
+        "durationValue": 30.0,
+        "primary": {
+          "type": "ftpPercentage",
+          "valueType": "single",
+          "value": 50.0,
+          "endValue": 50.0
+        }
+      }
+    }
+  }
+}
+```
+
+### Field Reference
+
+| Field | Type | Description |
+|---|---|---|
+| `currentIntervalIndex` | `int?` | Zero-based index of the current interval. Null at session boundaries. |
+| `nextIntervalIndex` | `int?` | Zero-based index of the next interval. Null at end of session. |
+| `groupType` | `string` | Interval group: `"workout"`, `"warmup"`, `"cooldown"`. |
+| `state` | `string` | Interval state: `"future"`, `"active"`, `"completed"`. |
+| `durationType` | `string` | How duration is measured, e.g. `"time"`, `"distance"`. |
+| `primary.type` | `string` | Target type, e.g. `"ftpPercentage"`, `"heartRate"`, `"cadence"`. |
+| `primary.valueType` | `string` | `"single"` for a fixed target, `"range"` for a range (use `value` and `endValue`). |
+
+> **Note:** `currentInterval` and `nextInterval` will be `null` at session boundaries (start/end). Always null-check before accessing nested properties.
+
 ## Event Handling
 
 ### Training Session Interval Changed
