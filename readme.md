@@ -105,49 +105,49 @@ The `payload` field is a JSON-encoded string. When deserialized, it has the foll
     "data": {
         "currentIntervalIndex": 1,
         "currentInterval": {
-        "index": null,
-        "groupType": "workout",
-        "absoluteStart": 60,
-        "duration": 60,
-        "enterOffset": 60,
-        "exitOffset": 120,
-        "groupEnterOffset": 0,
-        "state": "future",
-        "interval": {
-            "id": "interval-2",
-            "title": "Interval 2",
-            "durationType": "time",
-            "durationValue": 60,
-            "primary": {
-            "type": "ftpPercentage",
-            "valueType": "single",
-            "value": 110,
-            "endValue": 110
+            "index": null,
+            "groupType": "workout",
+            "absoluteStart": 60,
+            "duration": 60,
+            "enterOffset": 60,
+            "exitOffset": 120,
+            "groupEnterOffset": 0,
+            "state": "future",
+            "interval": {
+                "id": "interval-2",
+                "title": "Interval 2",
+                "durationType": "time",
+                "durationValue": 60,
+                "primary": {
+                    "type": "ftpPercentage",
+                    "valueType": "single",
+                    "value": 110,
+                    "endValue": 110
+                }
             }
-        }
         },
         "nextIntervalIndex": 2,
         "nextInterval": {
-        "index": null,
-        "groupType": "workout",
-        "absoluteStart": 120,
-        "duration": 60,
-        "enterOffset": 120,
-        "exitOffset": 180,
-        "groupEnterOffset": 0,
-        "state": "future",
-        "interval": {
-            "id": "interval-3",
-            "title": "Interval 3",
-            "durationType": "time",
-            "durationValue": 60,
-            "primary": {
-            "type": "ftpPercentage",
-            "valueType": "single",
-            "value": 160,
-            "endValue": 160
+            "index": null,
+            "groupType": "workout",
+            "absoluteStart": 120,
+            "duration": 60,
+            "enterOffset": 120,
+            "exitOffset": 180,
+            "groupEnterOffset": 0,
+            "state": "future",
+            "interval": {
+                "id": "interval-3",
+                "title": "Interval 3",
+                "durationType": "time",
+                "durationValue": 60,
+                "primary": {
+                    "type": "ftpPercentage",
+                    "valueType": "single",
+                    "value": 160,
+                    "endValue": 160
+                }
             }
-        }
         }
     },
 "event_type": "training-session.interval.changed",
