@@ -88,13 +88,13 @@ Events arrive from the SSE stream as JSON. Below is the full structure of a `Tra
 
 ```json
 {
-  "id": "evt_123",
-  "type": "TrainingSessionIntervalChanged",
-  "roomId": "123",
-  "user_id": "456",
-  "session_id": "7891011",
-  "broadcastedAt": 1706886000000,
-  "payload": "{...}"
+    "id": "1770191856506_Xq3cSUVy",
+    "type": "training-session.interval.changed",
+    "roomId": "828",
+    "user_id": "828",
+    "session_id": "e34c67f2-335c-4283-b853-a6777290ac12",
+    "broadcastedAt": 1770191856506,
+    "payload": "{...}"
 }
 ```
 
@@ -102,61 +102,57 @@ The `payload` field is a JSON-encoded string. When deserialized, it has the foll
 
 ```json
 {
-  "event_type": "TrainingSessionIntervalChanged",
-  "source": "stages-studio",
-  "timestamp": "2025-02-02T18:00:00Z",
-  "data": {
-    "currentIntervalIndex": 2,
-    "currentInterval": {
-      "index": 0,
-      "groupType": "workout",
-      "absoluteStart": 300.0,
-      "duration": 60.0,
-      "enterOffset": 0.0,
-      "exitOffset": 60.0,
-      "groupEnterOffset": 0.0,
-      "state": "active",
-      "isFirst": false,
-      "isLast": false,
-      "interval": {
-        "id": "001",
-        "title": "Interval 1",
-        "durationType": "time",
-        "durationValue": 60.0,
-        "primary": {
-          "type": "ftpPercentage",
-          "valueType": "single",
-          "value": 85.0,
-          "endValue": 85.0
+    "data": {
+        "currentIntervalIndex": 1,
+        "currentInterval": {
+        "index": null,
+        "groupType": "workout",
+        "absoluteStart": 60,
+        "duration": 60,
+        "enterOffset": 60,
+        "exitOffset": 120,
+        "groupEnterOffset": 0,
+        "state": "future",
+        "interval": {
+            "id": "interval-2",
+            "title": "Interval 2",
+            "durationType": "time",
+            "durationValue": 60,
+            "primary": {
+            "type": "ftpPercentage",
+            "valueType": "single",
+            "value": 110,
+            "endValue": 110
+            }
         }
-      }
+        },
+        "nextIntervalIndex": 2,
+        "nextInterval": {
+        "index": null,
+        "groupType": "workout",
+        "absoluteStart": 120,
+        "duration": 60,
+        "enterOffset": 120,
+        "exitOffset": 180,
+        "groupEnterOffset": 0,
+        "state": "future",
+        "interval": {
+            "id": "interval-3",
+            "title": "Interval 3",
+            "durationType": "time",
+            "durationValue": 60,
+            "primary": {
+            "type": "ftpPercentage",
+            "valueType": "single",
+            "value": 160,
+            "endValue": 160
+            }
+        }
+        }
     },
-    "nextIntervalIndex": 3,
-    "nextInterval": {
-      "index": 1,
-      "groupType": "workout",
-      "absoluteStart": 360.0,
-      "duration": 30.0,
-      "enterOffset": 0.0,
-      "exitOffset": 30.0,
-      "groupEnterOffset": 0.0,
-      "state": "future",
-      "isFirst": false,
-      "isLast": false,
-      "interval": {
-        "id": "002",
-        "title": "Recovery",
-        "durationType": "time",
-        "durationValue": 30.0,
-        "primary": {
-          "type": "ftpPercentage",
-          "valueType": "single",
-          "value": 50.0,
-          "endValue": 50.0
-        }
-      }
-    }
-  }
+"event_type": "training-session.interval.changed",
+"source": "studio-state-manager",
+"timestamp": "2026-02-04T07:57:36.505761686Z"
 }
 ```
 
